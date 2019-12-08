@@ -1,0 +1,29 @@
+@import '../../assets/palette';
+
+.home-section {
+  padding-top: 1.25rem;
+
+  .card-title {
+    border-bottom: 1px solid $color-grey;
+    padding-bottom: 1.25rem;
+  }
+
+  .card-detail {
+    justify-content: space-between;
+  }
+
+  .btn-primary {
+    margin-top: 1.25rem;
+  }
+
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  .canvas-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 1.25rem;
+  }
+}

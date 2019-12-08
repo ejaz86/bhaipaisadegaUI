@@ -1,0 +1,39 @@
+<div class="container">
+  <h3>Transaction Type: {{type}}</h3>
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="interestAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Interest Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.interestAmount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paymentChannel">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Channel </th>
+        <td mat-cell *matCellDef="let element"> {{element.paymentChannel}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Created At </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+</div>
+

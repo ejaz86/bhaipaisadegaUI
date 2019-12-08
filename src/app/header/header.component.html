@@ -1,0 +1,21 @@
+<header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>
+        <mat-icon aria-hidden="false" [matMenuTriggerFor]="profileMenu" aria-label="Example user icon">account_circle</mat-icon>
+        <mat-menu #profileMenu="matMenu">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item>Change Password</button>
+        </mat-menu>
+        <span>{{user?.name}}</span>
+      </span>
+      <span>
+        <mat-icon aria-expanded="false" [matMenuTriggerFor]="userMenu" aria-label="Example user list icon">group</mat-icon>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item *ngFor="let user of userList">{{user.name}}</button>
+        </mat-menu>
+        <a mat-button (click)="clickHandler()">Logout</a>
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>

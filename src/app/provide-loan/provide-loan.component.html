@@ -1,0 +1,55 @@
+<section class="login-sign-up">
+  <mat-card>
+    <mat-card-title>Provide Loan</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="processLoan()">
+        <p>
+          <mat-form-field>
+            <mat-label>Select User</mat-label>
+            <mat-select required formControlName="userId">
+              <div *ngFor="let user of userList">
+                <mat-option *ngIf="user.userId !== userDetails.userId" [value]="user.userId">
+                  {{user.userName}}
+                </mat-option>
+              </div>
+            </mat-select>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input type="number" matInput placeholder="Amount" required formControlName="amount">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input type="number" matInput placeholder="Rate Of Interest" required formControlName="interestRate">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input type="number" matInput placeholder="EMI Duration" required formControlName="tenure">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Select Payment Channel</mat-label>
+            <mat-select required formControlName="paymentChannel">
+              <mat-option *ngFor="let channel of paymentChannel" [value]="channel">
+                {{channel}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+
+        <div class="button">
+          <button type="submit" mat-button>Submit</button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -1,0 +1,35 @@
+
+<section class="container home-section">
+  <div class="row" *ngIf="userData">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Lend Money</h5>
+          <div class="col row card-detail">
+            <span>Total Lend: {{userData.totalLendAmount}}</span>
+            <span>Total Receive: {{userData.receivedAmount}}</span>
+          </div>
+          <a (click)="clickHandler('lend')" class="btn btn-primary">Detail</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Loan Money</h5>
+          <div class="col row card-detail">
+            <span>Total Loan: {{userData.totalLoanAmount}}</span>
+            <span>Total Paid: {{userData.paidAmount}}</span>
+          </div>
+          <a (click)="clickHandler('loan')" class="btn btn-primary">Detail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="canvas-container" *ngIf="pieChartLabels.length">
+    <div>Pie Chart</div>
+    <canvas ngChartjs [data]="pieChartData" [labels]="pieChartLabels" [colors]="pieColors"
+            [chartType]="pieChartType"></canvas>
+  </div>
+</section>
