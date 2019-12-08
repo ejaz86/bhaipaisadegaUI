@@ -12,10 +12,10 @@ import {StorageKeys} from '../shared/constant';
 })
 export class ProvideLoanComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    userId: new FormControl(''),
-    amount: new FormControl(''),
+    loanUserId: new FormControl(''),
+    lendAmount: new FormControl(''),
     interestRate: new FormControl(''),
-    tenure: new FormControl(''),
+    totalEmi: new FormControl(''),
     paymentChannel: new FormControl('')
 });
   userDetails: any;
@@ -29,13 +29,14 @@ export class ProvideLoanComponent implements OnInit {
   ngOnInit(): void {
     this.userDetails = (this.cacheService.userDetail) ? this.cacheService.userDetail
       : StorageHelper.getLocal(StorageKeys.UserDetail);
+
     this.getAllUserList();
   }
 
   processLoan() {
     if (this.form.valid) {
       let data = this.form.value;
-      data.lendUserId = this.cacheService.userDetail.userId;
+      data.lendUserId = this.userDetails.userId;
       this.cacheService.processData = data;
       this.router.navigate(['payment']);
     }

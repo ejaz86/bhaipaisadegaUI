@@ -27,15 +27,19 @@ export class DetailComponent implements OnInit, AfterViewInit {
               private cacheService: CacheService) { }
 
   ngOnInit() {
-    this.type = (this.route.snapshot.queryParams.type === 'loan') ? 'Loan' : 'Lend';
+    if (this.route.snapshot.queryParams.type === 'loan') {
+      this.type = 'Loan';
+      this.displayedColumns[1] = 'loanAmount';
+    } else {
+      this.type = 'Lend';
+    }
     this.user = (this.cacheService.userDetail) ? this.cacheService.userDetail
       : StorageHelper.getLocal(StorageKeys.UserDetail);
     this.getAllLoan();
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
   }
 
   applyFilter(filterValue: string) {
@@ -47,7 +51,6 @@ export class DetailComponent implements OnInit, AfterViewInit {
   }
 
   clickHandler(value) {
-    console.log(value);
     this.router.navigate(['transaction-detail'], {queryParams:
         {type: this.route.snapshot.queryParams.type, id: value.id}
     });
@@ -57,6 +60,8 @@ export class DetailComponent implements OnInit, AfterViewInit {
     this.cacheService.getUserMoneyData(this.route.snapshot.queryParams.type, this.user.userId).subscribe(resp => {
       if (resp.length) {
         this.dataSource = new MatTableDataSource(resp);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }
     });
   }

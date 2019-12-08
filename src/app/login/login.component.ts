@@ -26,7 +26,6 @@ export class LoginComponent {
       this.cacheService.loginUser(this.form.value)
         .subscribe(response => {
           if (response) {
-            console.log(response);
             this.cacheService.userDetail = response;
             this.cacheService.isLoggedIn.next(true);
             StorageHelper.setLocal(StorageKeys.IsLoggedIn, true);

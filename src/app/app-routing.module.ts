@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'detail', component: DetailComponent, canActivate: [IsAuthenticatedGuard] },
   { path: 'transaction-detail', component: TransactionHistoryComponent, canActivate: [IsAuthenticatedGuard] },
   { path: 'provide-loan', component: ProvideLoanComponent, canActivate: [IsAuthenticatedGuard] },
-  { path: 'payment', component: PaymentComponent },
+  { path: 'payment', component: PaymentComponent, canActivate: [IsAuthenticatedGuard] },
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

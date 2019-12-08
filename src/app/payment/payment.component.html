@@ -4,11 +4,11 @@
       Payment
     </div>
     <div class="card-body">
-      <h5 class="card-title">Amount: {{processData.amount}}</h5>
+      <h5 class="card-title">Amount: {{processData.lendAmount}}</h5>
       <h5 class="card-title">Payment Channel: {{processData.paymentChannel}}</h5>
-      <h5 class="card-title">Rate Of Interest: {{processData.InterestRate}}</h5>
-      <h5 class="card-title">EMI Duration: {{processData.tenure}}</h5>
-      <a href="#" class="btn btn-primary" (click)="process()">Pay</a>
+      <h5 class="card-title">Rate Of Interest: {{processData.interestRate}}</h5>
+      <h5 class="card-title">EMI Duration: {{processData.totalEmi}}</h5>
+      <a class="btn btn-primary" (click)="process()">Pay</a>
     </div>
   </div>
 </div>

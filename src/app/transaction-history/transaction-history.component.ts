@@ -32,8 +32,7 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
   }
 
   applyFilter(filterValue: string) {
@@ -48,6 +47,8 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     this.cacheService.getAllPaymentHistory(this.route.snapshot.queryParams.type, this.user).subscribe(resp => {
       if (resp.length) {
         this.dataSource = new MatTableDataSource(resp);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }
     });
   }

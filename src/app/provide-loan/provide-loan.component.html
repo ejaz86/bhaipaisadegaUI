@@ -6,7 +6,7 @@
         <p>
           <mat-form-field>
             <mat-label>Select User</mat-label>
-            <mat-select required formControlName="userId">
+            <mat-select required formControlName="loanUserId">
               <div *ngFor="let user of userList">
                 <mat-option *ngIf="user.userId !== userDetails.userId" [value]="user.userId">
                   {{user.userName}}
@@ -18,7 +18,7 @@
 
         <p>
           <mat-form-field>
-            <input type="number" matInput placeholder="Amount" required formControlName="amount">
+            <input type="number" matInput placeholder="Amount" required formControlName="lendAmount">
           </mat-form-field>
         </p>
 
@@ -30,7 +30,7 @@
 
         <p>
           <mat-form-field>
-            <input type="number" matInput placeholder="EMI Duration" required formControlName="tenure">
+            <input type="number" matInput placeholder="EMI Duration" required formControlName="totalEmi">
           </mat-form-field>
         </p>
 

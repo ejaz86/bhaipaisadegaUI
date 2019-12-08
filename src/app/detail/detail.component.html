@@ -14,9 +14,14 @@
         <td mat-cell *matCellDef="let element"> {{element.lendUser.userName}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="lendAmount">
+      <ng-container matColumnDef="lendAmount" *ngIf="type === 'Lend'">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
         <td mat-cell *matCellDef="let element"> {{element.lendAmount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="loanAmount" *ngIf="type === 'Loan'">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.loanAmount}} </td>
       </ng-container>
 
       <ng-container matColumnDef="status">
